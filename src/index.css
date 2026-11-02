@@ -1,0 +1,372 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+
+/* ========== 代码块 ========== */
+.code-block {
+  background: #0d1117;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 16px 0;
+}
+
+.code-block-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  background: #161b22;
+  color: #d6deeb;
+  font-size: 13px;
+  border-bottom: 1px solid #30363d;
+}
+
+.code-block pre {
+  margin: 0;
+  padding: 16px;
+  overflow-x: auto;
+  font-family: "JetBrains Mono", Consolas, Menlo, monospace;
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: #d6deeb;
+}
+
+.tok-keyword {
+  color: #c792ea;
+}
+.tok-string {
+  color: #ecc48d;
+}
+.tok-number {
+  color: #f78c6c;
+}
+.tok-comment {
+  color: #6a737d;
+  font-style: italic;
+}
+.tok-type {
+  color: #82aaff;
+}
+
+/* ========== 排序柱状图 ========== */
+.algo-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 300px;
+  padding: 16px 8px 8px;
+  background: #fafafa;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
+}
+
+.algo-bar {
+  flex: 1;
+  min-width: 6px;
+  border-radius: 4px 4px 0 0;
+  background: #1677ff;
+  transition: height 0.12s ease, background 0.12s ease;
+  position: relative;
+}
+
+.algo-bar .bar-value {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  color: #999;
+  white-space: nowrap;
+}
+
+.algo-bar.is-compare {
+  background: #faad14;
+}
+.algo-bar.is-swap {
+  background: #ff4d4f;
+}
+.algo-bar.is-overwrite {
+  background: #722ed1;
+}
+.algo-bar.is-sorted {
+  background: #52c41a;
+}
+
+.step-note {
+  min-height: 40px;
+  margin-top: 12px;
+  padding: 8px 14px;
+  background: #f6f8fa;
+  border-left: 3px solid #1677ff;
+  border-radius: 4px;
+  color: #444;
+}
+
+/* ========== 搜索网格 ========== */
+.search-grid {
+  display: grid;
+  gap: 2px;
+  background: #e8e8e8;
+  padding: 2px;
+  border-radius: 8px;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.grid-cell {
+  width: 28px;
+  height: 28px;
+  background: #fff;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.grid-cell:hover {
+  outline: 2px solid #1677ff;
+}
+
+.grid-cell.is-wall {
+  background: #34495e;
+}
+
+.grid-cell.is-visited {
+  background: #a6d3ff;
+}
+
+.grid-cell.is-frontier {
+  background: #ffc53d;
+}
+
+.grid-cell.is-path {
+  background: #52c41a;
+}
+
+.grid-cell.is-start,
+.grid-cell.is-end {
+  background: #722ed1;
+  color: #fff;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: default;
+}
+
+/* ========== 区间时间轴 ========== */
+.timeline {
+  position: relative;
+  padding: 12px 0 28px;
+  border-bottom: 2px solid #d9d9d9;
+}
+
+.timeline-row {
+  display: flex;
+  align-items: center;
+  margin: 6px 0;
+  height: 26px;
+  position: relative;
+}
+
+.timeline-label {
+  width: 28px;
+  font-weight: bold;
+  color: #555;
+  flex-shrink: 0;
+}
+
+.timeline-track {
+  position: relative;
+  flex: 1;
+  height: 100%;
+}
+
+.timeline-bar {
+  position: absolute;
+  top: 2px;
+  height: 22px;
+  border-radius: 4px;
+  background: #91caff;
+  color: #333;
+  font-size: 11px;
+  line-height: 22px;
+  text-align: center;
+  transition: background 0.2s;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.timeline-bar.is-chosen {
+  background: #52c41a;
+  color: #fff;
+}
+
+.timeline-bar.is-current-ok {
+  background: #faad14;
+  color: #fff;
+}
+
+.timeline-bar.is-current-bad {
+  background: #ff4d4f;
+  color: #fff;
+}
+
+.timeline-axis {
+  position: relative;
+  height: 24px;
+  margin-top: 4px;
+}
+
+.timeline-tick {
+  position: absolute;
+  transform: translateX(-50%);
+  font-size: 11px;
+  color: #999;
+}
+
+/* ========== DP 表格 ========== */
+.dp-table {
+  display: inline-block;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  overflow: auto;
+  max-width: 100%;
+}
+
+.dp-row {
+  display: flex;
+}
+
+.dp-cell {
+  width: 52px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #f0f0f0;
+  font-size: 13px;
+  font-family: Consolas, monospace;
+  background: #fff;
+}
+
+.dp-cell.is-head {
+  background: #fafafa;
+  font-weight: bold;
+  color: #666;
+}
+
+.dp-cell.is-filled {
+  background: #e6f4ff;
+}
+
+.dp-cell.is-dep {
+  background: #fff7e6;
+}
+
+.dp-cell.is-current {
+  background: #faad14;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* ========== 柱状图通用（二分/DP） ========== */
+.viz-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 220px;
+  padding: 26px 8px 8px;
+  background: #fafafa;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
+}
+
+.viz-bar {
+  flex: 1;
+  min-width: 14px;
+  border-radius: 4px 4px 0 0;
+  background: #1677ff;
+  position: relative;
+  transition: background 0.15s;
+}
+
+.viz-bar .bar-value {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  color: #999;
+}
+
+.viz-bar .bar-tag {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  color: #666;
+  white-space: nowrap;
+}
+
+.viz-bar.is-lo {
+  background: #bae0ff;
+}
+
+.viz-bar.is-mid {
+  background: #faad14;
+}
+
+.viz-bar.is-found {
+  background: #52c41a;
+}
+
+.viz-bar.is-out {
+  background: #d9d9d9;
+}
+
+/* DP 柱状图 */
+.viz-bar.is-filled {
+  background: #52c41a;
+}
+
+.viz-bar.is-current {
+  background: #faad14;
+}
+
+/* 金币 */
+.coin-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #faad14;
+  color: #5a3c00;
+  font-weight: bold;
+  margin: 4px;
+  animation: pop 0.25s ease;
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
